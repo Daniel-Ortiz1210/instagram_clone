@@ -18,14 +18,14 @@ class User(AbstractUser):
         symmetrical=False
         )
     profile_photo = models.ImageField(upload_to='static/', blank=True)
-    birthday = models.DateField(null=True, blank=True, default=None)
     bio = models.CharField(max_length=160, null=True, blank=True, default=None)
     gender = models.CharField(max_length=10, default=None, null=True, blank=True)
     phone = models.IntegerField(null=True, blank=True, default=None)
+    age = models.IntegerField(null=False, blank=False)
 
     class Meta:
         constraints = [
-            models.CheckConstraint(check=models.Q(birthday__lte=(datetime.date.today() - datetime.timedelta(days=6570))), name='is_adult')
+            models.CheckConstraint(check=models.Q(age__gte=18), name='is_adult')
         ]
 
 class Follow(models.Model):
