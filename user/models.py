@@ -21,7 +21,7 @@ class User(AbstractUser):
     bio = models.CharField(max_length=160, null=True, blank=True, default=None)
     gender = models.CharField(max_length=10, default=None, null=True, blank=True)
     phone = models.IntegerField(null=True, blank=True, default=None)
-    age = models.IntegerField(null=False, blank=False)
+    age = models.IntegerField(null=True, blank=False)
 
     class Meta:
         constraints = [
@@ -43,6 +43,6 @@ class Follow(models.Model):
                 check=~models.Q(from_user=models.F("to_user"))
             )
         ]
-
+    
     def __str__(self):
-        return self.username
+        return f'{self.from_user.username} -> {self.to_user.username}'
