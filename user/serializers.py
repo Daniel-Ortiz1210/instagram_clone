@@ -26,11 +26,6 @@ class UserRegisterSerializer(ModelSerializer):
         return instance
 
 
-
-
-    
-
-
 class UserProfileSerializer(ModelSerializer):
     followers = SerializerMethodField()
     following = SerializerMethodField()
