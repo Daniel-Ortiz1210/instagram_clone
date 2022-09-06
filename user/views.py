@@ -4,6 +4,7 @@ from .serializers import UserRegisterSerializer, UserProfileSerializer, Followin
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
+
 from .models import Follow
 
 class RegisterUser(APIView):
