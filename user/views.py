@@ -42,7 +42,7 @@ class Following(APIView):
     def get(self, request, username):
         if username == request.user.username:
             q = Follow.objects.filter(from_user=request.user).all()
-            serializer = FollowSerializer(q, many=True)
+            serializer = FollowingSerializer(q, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
 
 

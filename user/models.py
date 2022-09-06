@@ -8,7 +8,6 @@ https://adamj.eu/tech/2021/02/26/django-check-constraints-prevent-self-following
 
 '''
 
-# Create your models here.
 class User(AbstractUser):
     email = models.EmailField(unique=True, max_length=255)
     followers = models.ManyToManyField(
